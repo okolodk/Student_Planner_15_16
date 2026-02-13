@@ -19,8 +19,6 @@
 Все переходы поддерживают корректную работу системной кнопки «Назад» благодаря управлению **Back Stack**.
 
 ## Скриншоты
-> ⚠️ Замените пути на актуальные после сохранения изображений в папку `/app/img/`
-
 - Главный экран: ![Главная](app/img/step7_navigation_working_Alekseev_1.png)
 - Экран деталей: ![Детали](app/img/step7_navigation_working_Alekseev_2.png)
 - Профиль: ![Профиль](app/img/step7_navigation_working_Alekseev_3.png)
