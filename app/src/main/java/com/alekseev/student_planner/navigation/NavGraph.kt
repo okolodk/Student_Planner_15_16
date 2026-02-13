@@ -7,7 +7,9 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.alekseev.student_planner.data.sampleSubjects
 import com.alekseev.student_planner.ui_model.*
+import com.alekseev.student_planner.data.sampleSchedule
 
 @Composable
 fun StudentPlannerNavHost(
@@ -29,6 +31,9 @@ fun StudentPlannerNavHost(
                 },
                 onSettingsClick = {
                     navController.navigate(Screen.Settings.route)
+                },
+                onScheduleClick = {
+                    navController.navigate(Screen.Schedule.route)
                 }
             )
         }
@@ -66,5 +71,21 @@ fun StudentPlannerNavHost(
                 }
             )
         }
+
+        composable("schedule") {
+            ScheduleScreen(
+                onNavigateBack = { navController.popBackStack() },
+                onLessonClick = { lessonId ->
+                    val lesson = sampleSchedule.find { it.id == lessonId }
+                    if (lesson != null) {
+                        val subject = sampleSubjects.find { it.name == lesson.subjectName }
+                        if (subject != null) {
+                            navController.navigate(Screen.Details.createRoute(subject.id))
+                        }
+                    }
+                }
+            )
+        }
+
     }
 }
